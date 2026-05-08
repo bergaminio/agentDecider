@@ -39,8 +39,12 @@ agent_colors = {
 26: "#5f2580", 27: "#ff7b00", 28: "#ffe600", 29: "#224e99", 30: "#e1ff00"
 }
 Random_Agent = random.choice(list(Agent))
-
-
+def get_random_agent():
+    return random.choice(list(Agent))
+def show_random_agent():
+    new_agent = get_random_agent()
+    agent_label.config (text=f"Your Agent: {Agent(new_agent).name}", background=agent_colors[new_agent])
+    AgentWindow.configure(background=agent_colors[new_agent])
 AgentWindow = Tk() #Creates a window
 AgentWindow.geometry("420x200") #Sets the size of the window
 
@@ -50,6 +54,10 @@ AgentWindow.title("Agent Decider") #Title of the window
 agent_label = Label(AgentWindow, text=f"Your Agent: {Agent(Random_Agent).name}", font=("Arial", 20, "bold"), fg="white", background=agent_colors[Random_Agent]) #Label to display the random agent
 AgentWindow.configure(background=agent_colors[Random_Agent]) #Sets the background color of the window to the color of the agent
 agent_label.pack(pady=20)   
+
+random_button = Button(AgentWindow, text="Random Agent")
+random_button.config(command=lambda: show_random_agent())
+random_button.pack(pady=10)
 
 icon = PhotoImage(file="image.png") #Icon of the window
 AgentWindow.iconphoto(True, icon)
