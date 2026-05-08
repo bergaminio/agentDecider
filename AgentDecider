@@ -1,0 +1,57 @@
+from tkinter import *
+from enum import Enum, IntEnum
+import random
+class Agent(IntEnum):
+    BRIMSTONE = 1
+    VIPER = 2
+    OMEN = 3
+    KILLJOY = 4
+    CYPHER = 5
+    SOVA = 6
+    SAGE = 7
+    PHOENIX = 9
+    JETT = 10
+    REYNA = 11
+    RAZE = 12
+    BREACH = 13
+    SKYE = 14
+    YORU = 15
+    ASTRA = 16
+    KAYO = 17
+    CHAMBER = 18
+    NEON = 19
+    FADE = 20
+    HARBOR = 21
+    GEKKO = 22
+    DEADLOCK = 23
+    ISO = 24
+    CLOVE = 25
+    VYSE = 26
+    TEJO = 27
+    WAYLAY = 28
+    VETO = 29
+    MIKS = 30
+agent_colors = {
+1: "#ff7700", 2: "#a1bd48", 3: "#10167D", 4: "#efda15", 5: "#707070", 6: "#d9d9d9",
+7: "#5deba4",9: "#ff0000", 10: "#00ffff", 11: "#ff00ff", 12: "#ff8000", 13: "#ffbf00",
+14: "#00ff00", 15: "#0000ff", 16: "#8000ff", 17: "#80bdd5", 18: "#e3ae54", 19: "#17ffff",
+20: "#000000", 21: "#4381cc", 22: "#7cff1e", 23: "#cafaf5", 24: "#6d0098", 25: "#d040b1",
+26: "#5f2580", 27: "#ff7b00", 28: "#ffe600", 29: "#224e99", 30: "#e1ff00"
+}
+Random_Agent = random.choice(list(Agent))
+
+
+AgentWindow = Tk() #Creates a window
+AgentWindow.geometry("420x200") #Sets the size of the window
+
+AgentWindow.title("Agent Decider") #Title of the window
+
+# Display the random agent
+agent_label = Label(AgentWindow, text=f"Your Agent: {Agent(Random_Agent).name}", font=("Arial", 20, "bold"), fg="white", background=agent_colors[Random_Agent]) #Label to display the random agent
+AgentWindow.configure(background=agent_colors[Random_Agent]) #Sets the background color of the window to the color of the agent
+agent_label.pack(pady=20)   
+
+icon = PhotoImage(file="image.png") #Icon of the window
+AgentWindow.iconphoto(True, icon)
+
+AgentWindow.mainloop() #places the window on the computer screen and listens for events
